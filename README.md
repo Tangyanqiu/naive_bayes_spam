@@ -4,19 +4,19 @@ https://github.com/udacity/machine-learning/blob/master/projects/practice_projec
 ![mahua](mahua-logo.jpg)
 
 ## 依赖库
-Python 3.6
-PyTorch = 0.4.1
-Torchvision 0.2.1
-numpy
-skimage
-imageio
-matplotlib
-tqdm
-nvidia 10.1
+Python 3.6  
+PyTorch = 0.4.1  
+Torchvision 0.2.1  
+numpy  
+skimage  
+imageio  
+matplotlib  
+tqdm  
+nvidia 10.1  
 cudnn 7.5
 
 ## 代码（连接待修改）
-git clone https://github.com/thstkdgus35/EDSR-PyTorch
+git clone https://github.com/thstkdgus35/EDSR-PyTorch  
 cd EDSR-PyTorch
 
 ## 网络的训练

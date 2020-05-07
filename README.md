@@ -3,7 +3,7 @@ reference:
 https://github.com/udacity/machine-learning/blob/master/projects/practice_projects/naive_bayes_tutorial/Bayesian_Inference_solution.ipynb
 ![mahua](mahua-logo.jpg)
 
-## 依赖库
+## 依赖库(在上一行末尾加两个空格实现换行)
 Python 3.6  
 PyTorch = 0.4.1  
 Torchvision 0.2.1  

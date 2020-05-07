@@ -3,8 +3,63 @@ reference:
 https://github.com/udacity/machine-learning/blob/master/projects/practice_projects/naive_bayes_tutorial/Bayesian_Inference_solution.ipynb
 ![mahua](mahua-logo.jpg)
 
-## MaHua是什么?
-一个在线编辑markdown文档的编辑器
+## 依赖库
+Python 3.6
+PyTorch = 0.4.1
+Torchvision 0.2.1
+numpy
+skimage
+imageio
+matplotlib
+tqdm
+nvidia 10.1
+cudnn 7.5
+
+## 代码（连接待修改）
+git clone https://github.com/thstkdgus35/EDSR-PyTorch
+cd EDSR-PyTorch
+
+## 网络的训练
+### 准备训练数据
+Download DIV2K training data (800 training + 100 validtion images) from DIV2K dataset or SNU_CVLab.
+Specify '--dir_data' based on the HR and LR images path. In option.py, '--ext' is set as 'sep_reset', which first convert .png to .npy. If all the training images (.png) are converted to .npy files, then set '--ext sep' to skip converting files.
+For more informaiton, please refer to EDSR(PyTorch)https://github.com/yulunzhang/RCAN
+
+### 开始训练
+Cd to 'SR_TrainCode/code', run the following scripts to train models.
+'''
+# BI, scale 2, 3, 4, 8
+# input=48x48, output=96x96
+python main.py --model RCAN --save RCAN_BIX2 --scale 2 --n_resblocks 32 --n_feats 64  --reset --chop --save_results --print_model --patch_size 96
+
+# input=48x48, output=144x144
+python main.py --model RCAN --save RCAN_BIX3 --scale 3 --n_resblocks 32 --n_feats 64  --reset --chop --save_results --print_model --patch_size 144 --pre_train ../experiment/model/RCAN_BIX2.pt
+
+# input=48x48, output=192x192
+python main.py --model RCAN --save RCAN_BI --scale 4 --n_resblocks 32 --n_feats 64  --reset --chop --save_results --print_model --patch_size 192 --pre_train ../experiment/model/RCAN_BIX2.pt
+'''
+
+## 测试
+### 准备测试数据集
+Place the original test sets (e.g., Set5, other test sets are available from GoogleDrive or Baidu) in 'OriginalTestData'.
+Run 'Prepare_TestData_HR_LR.m' in Matlab to generate HR/LR images with different degradation models.
+
+
+### 重建SR图像
+Download models for our paper and place them in '/RCAN_TestCode/model'.
+Cd to '/RCAN_TestCode/code', run the following scripts.
+'''
+python main.py --data_test MyImage --scale 2 --model RCAN --n_resgroups 10 --n_resblocks 20 --n_feats 64 --pre_train ../model/RCAN_BIX2.pt --test_only --save_results --chop --save 'RCAN' --testpath ../LR/LRBI --testset Set5
+# RCAN_BIX3
+python main.py --data_test MyImage --scale 3 --model RCAN --n_resgroups 10 --n_resblocks 20 --n_feats 64 --pre_train ../model/RCAN_BIX3.pt --test_only --save_results --chop --save 'RCAN' --testpath ../LR/LRBI --testset Set5
+# RCAN_BIX4
+python main.py --data_test MyImage --scale 4 --model RCAN --n_resgroups 10 --n_resblocks 20 --n_feats 64 --pre_train ../model/RCAN_BIX4.pt --test_only --save_results --chop --save 'RCAN' --testpath ../LR/LRBI --testset Set5
+'''
+ ### 测试指标值
+ Run 'Evaluate_PSNR_SSIM.m' to obtain PSNR/SSIM values for paper.
+
+
+
 
 ##MaHua有哪些功能？
 

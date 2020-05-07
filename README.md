@@ -2,7 +2,8 @@
 reference:  
 https://github.com/udacity/machine-learning/blob/master/projects/practice_projects/naive_bayes_tutorial/Bayesian_Inference_solution.ipynb
 ![mahua](mahua-logo.jpg)
-##MaHua是什么?
+
+## MaHua是什么?
 一个在线编辑markdown文档的编辑器
 
 ##MaHua有哪些功能？

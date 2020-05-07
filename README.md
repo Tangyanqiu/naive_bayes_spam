@@ -12,7 +12,7 @@ skimage
 imageio  
 matplotlib  
 tqdm  
-nvidia 10.1  
+cuda 10.1  
 cudnn 7.5
 
 ## 代码（连接待修改）
@@ -26,7 +26,7 @@ Specify '--dir_data' based on the HR and LR images path. In option.py, '--ext' i
 For more informaiton, please refer to EDSR(PyTorch)https://github.com/yulunzhang/RCAN
 
 ### 开始训练
-Cd to 'SR_TrainCode/code', run the following scripts to train models.
+cd to 'SR_TrainCode/code', run the following scripts to train models.
 
 #BI, scale 2, 3, 4, 8
 #input=48x48, output=96x96
@@ -47,7 +47,7 @@ Run 'Prepare_TestData_HR_LR.m' in Matlab to generate HR/LR images with different
 
 ### 重建SR图像
 Download models for our paper and place them in '/RCAN_TestCode/model'.
-Cd to '/RCAN_TestCode/code', run the following scripts.
+cd to '/RCAN_TestCode/code', run the following scripts.
 
 #RCAN_BIX2
 * python main.py --data_test MyImage --scale 2 --model RCAN --n_resgroups 10 --n_resblocks 20 --n_feats 64 --pre_train ../model/RCAN_BIX2.pt --test_only --save_results --chop --save 'RCAN' --testpath ../LR/LRBI --testset Set5
